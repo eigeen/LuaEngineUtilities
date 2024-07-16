@@ -1,7 +1,7 @@
-# LuaEngineEx
+# LuaEngineUtilities
 
-LuaEngineEx，是一个基于 [Lua 5.4](https://www.lua.org/) 开发的插件引擎，应用于怪物猎人世界。
+LuaEngineUtilities 是 [LuaEngine](https://github.com/HalcyonAlcedo/LuaEngine) 的扩展插件，提供了一些额外的功能。
 
-LuaEngineEx 受到 [LuaEngine](https://github.com/HalcyonAlcedo/LuaEngine) 启发而编写，旨在优化原有的脚本编写模式，提高自由度和性能，并添加更多功能。
+## API Reference
 
-LuaEngineEx 当前仍在开发中，短期目标：至少达到 LuaEngine 当前支持的基本所有功能。
+API参考文档请参阅 [LuaEngineUtilities API Reference](https://luaeutilities.docs.eigeen.cc/)。

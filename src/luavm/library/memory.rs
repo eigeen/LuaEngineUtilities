@@ -5,7 +5,7 @@ use mlua::UserData;
 pub struct Memory;
 
 impl UserData for Memory {
-    fn add_methods<'lua, M: LuaUserDataMethods<'lua, Self>>(methods: &mut M) {
+    fn add_methods<M: LuaUserDataMethods<Self>>(methods: &mut M) {
         methods.add_function("newPtr", |_, ()| Ok(RawPtr::new()));
         methods.add_function("read", |_, (addr, type_name): (usize, String)| {
             let type_name =
@@ -66,7 +66,7 @@ pub struct RawPtr {
 }
 
 impl UserData for RawPtr {
-    fn add_methods<'lua, M: LuaUserDataMethods<'lua, Self>>(methods: &mut M) {
+    fn add_methods<M: LuaUserDataMethods<Self>>(methods: &mut M) {
         methods.add_function_mut("setBase", |_, (ud, base): (LuaAnyUserData, usize)| {
             {
                 let mut this = ud.borrow_mut::<RawPtr>()?;
@@ -84,16 +84,13 @@ impl UserData for RawPtr {
                 Ok(ud)
             },
         );
-        methods.add_function_mut(
-            "setOffset",
-            |_, (ud, offset): (LuaAnyUserData, isize)| {
-                {
-                    let mut this = ud.borrow_mut::<RawPtr>()?;
-                    this.override_offset(offset);
-                }
-                Ok(ud)
-            },
-        );
+        methods.add_function_mut("setOffset", |_, (ud, offset): (LuaAnyUserData, isize)| {
+            {
+                let mut this = ud.borrow_mut::<RawPtr>()?;
+                this.override_offset(offset);
+            }
+            Ok(ud)
+        });
         methods.add_method("read", |_, this, type_name: String| {
             let type_name =
                 TypeName::from_str(&type_name).ok_or(LuaError::RuntimeError(format!(

@@ -73,6 +73,10 @@ extern "system" fn DllMain(_: usize, call_reason: u32, _: usize) -> BOOL {
         DLL_PROCESS_ATTACH => MAIN_THREAD_ONCE.call_once(|| {
             logger::init_log();
             std::panic::set_hook(Box::new(panic_handler));
+            info!(
+                "LuaEngineUtilities plugin loaded. Version: {}",
+                env!("CARGO_PKG_VERSION")
+            );
         }),
         DLL_PROCESS_DETACH => {
             RUNNING.store(false, atomic::Ordering::SeqCst);

@@ -8,7 +8,7 @@ static CHAT_MESSAGE_SENDER: Lazy<ChatMessageSender> = Lazy::new(ChatMessageSende
 pub struct Game;
 
 impl UserData for Game {
-    fn add_methods<'lua, M: LuaUserDataMethods<'lua, Self>>(methods: &mut M) {
+    fn add_methods<M: LuaUserDataMethods<Self>>(methods: &mut M) {
         methods.add_function("sendMessage", |_, arg: String| {
             CHAT_MESSAGE_SENDER.send(&arg);
             Ok(())

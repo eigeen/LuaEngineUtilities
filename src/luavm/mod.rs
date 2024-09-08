@@ -42,14 +42,11 @@ impl LuaVMManager {
 
     /// 注销Lua虚拟机，释放资源
     pub fn unregister_lua(&mut self, lua_state: *mut mlua::lua_State) -> anyhow::Result<()> {
-        // 不能remove，会导致多次释放
-        // 因此会造成少量内存泄漏
-        // 仅在重载Lua时发生，代价可接受
-        // self.cores.remove(&(lua_state as usize));
-        if let Some(core) = self.cores.get_mut(&(lua_state as usize)) {
+        if let Some(_core) = self.cores.get_mut(&(lua_state as usize)) {
             // core.unregister();
         };
-
+        self.cores.remove(&(lua_state as usize));
+        
         Ok(())
     }
 }

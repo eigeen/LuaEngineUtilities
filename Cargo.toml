@@ -16,7 +16,9 @@ mhw_toolkit = { path = "../mhw-toolkit", features = ["logger", "hooks"]}
 windows = { version = "0.58", features = ["Win32_System_SystemServices"] }
 log = "0.4"
 once_cell = "1.19"
-mlua = { version = "0.9", features = ["lua54", "vendored", "send", "serialize"] }
+# mlua = { version = "0.9", features = ["lua54", "vendored", "send", "serialize"] }
+# v0.10.0 beta
+mlua = { git = "https://github.com/mlua-rs/mlua", features = ["lua54", "vendored", "send", "serialize"] }
 rand = "0.8"
 anyhow = "1.0"
 

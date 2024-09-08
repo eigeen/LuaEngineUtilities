@@ -4,4 +4,4 @@ LuaEngineUtilities 是 [LuaEngine](https://github.com/HalcyonAlcedo/LuaEngine) �
 
 ## API Reference
 
-API参考文档请参阅 [LuaEngineUtilities API Reference](https://luaeutilities.docs.eigeen.cc/)。
+API参考文档请参阅 [LuaEngineUtilities API Reference](https://eigeen.github.io/LuaEngineUtilities/)。

@@ -4,7 +4,7 @@
 
 ## 函数
 
-### systemMessage(message: String, color: Option<String>)
+### systemMessage(message: String, color: Option\<String>)
 
 在右侧显示系统消息。
 
